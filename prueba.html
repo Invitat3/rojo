@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Invitación Elegante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('./img/fondo\ 900\ x\ 900.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*  background: #f7f2ed;*/
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .sobre-container {
+            width: 320px;
+            height: 220px;
+            position: relative;
+            perspective: 1200px;
+            cursor: pointer;
+        }
+        /* Cuerpo del sobre */
+        
+        .sobre {
+            width: 100%;
+            height: 100%;
+            background: #000000d0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s ease;
+            overflow: hidden;
+        }
+        /* Solapa del sobre */
+        
+        .solapa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: #afafafc9;
+            clip-path: polygon(0 0, 100% 0, 50% 100%, 50% 100%);
+            transform-origin: top center;
+            transition: transform 1s ease;
+            z-index: 2;
+        }
+        /* Texto sobre cerrado */
+        
+        .texto-sobre {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            z-index: 1;
+        }
+        
+        .texto-sobre h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: #e85fff;
+            margin-bottom: 5px;
+        }
+        
+        .texto-sobre p {
+            font-size: 1rem;
+            color: #ffffff;
+        }
+        /* Sello opcional */
+        
+        .sello {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            width: 50px;
+            height: 50px;
+            background: url('img/sello.png') no-repeat center/contain;
+            z-index: 3;
+        }
+        /* Estado abierto del sobre */
+        
+        .sobre.open .solapa {
+            transform: rotateX(-180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sobre-container" id="sobre">
+        <div class="sobre">
+            <div class="solapa"></div>
+            <div class="sello"></div>
+            <div class="texto-sobre">
+                <h1>¡Invitación!</h1>
+                <p>Haz clic para abrir</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sobre = document.getElementById('sobre');
+        sobre.addEventListener('click', () => {
+            const sobreDiv = sobre.querySelector('.sobre');
+            sobreDiv.classList.add('open');
+            // Esperar animación antes de ir a la invitación
+            setTimeout(() => {
+                window.location.href = 'invitacion.html'; // Cambia al link de tu invitación
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>
